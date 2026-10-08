@@ -28,8 +28,23 @@ def encode_player(player):
         return 0;
     pass
 
-# Step 3 - print_board (not yet solved)
-# TODO: implement
+# Step 3 - print_board
+import numpy as np
+
+def print_board(board):
+    """Print the 3x3 board using X, O, and . characters."""
+    # TODO: render each cell as 'X' (1), 'O' (-1), or '.' (0) in a 3x3 grid
+    for row in board:
+        line = []
+        for num in row:
+            if num==1:
+                line.append('X')
+            if num==-1:
+                line.append('O')
+            if num==0:
+                line.append('.')
+        print(" ".join(line))
+    pass
 
 # Step 4 - is_cell_empty (not yet solved)
 # TODO: implement
