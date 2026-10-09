@@ -118,8 +118,17 @@ def check_column_win(board, player):
     return False
     pass
 
-# Step 9 - check_main_diagonal_win (not yet solved)
-# TODO: implement
+# Step 9 - check_main_diagonal_win
+import numpy as np
+
+def check_main_diagonal_win(board, player):
+    """Return True if `player` occupies all three main-diagonal cells."""
+    # TODO: check whether the main diagonal of `board` is fully occupied by `player`...
+    if (board[0][0]==player)&(board[1][1]==player)&(board[2][2]==player):
+        return True
+    else:
+        return False
+    pass
 
 # Step 10 - check_anti_diagonal_win (not yet solved)
 # TODO: implement
