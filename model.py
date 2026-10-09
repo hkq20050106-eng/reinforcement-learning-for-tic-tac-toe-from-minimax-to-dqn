@@ -229,7 +229,7 @@ def play_hardcoded_game(moves):
         if get_game_status(board)!="ongoing":
             return (board,get_game_status(board))
         else:
-            place_move(board,move[0],move[1],player)
+            board = place_move(board,move[0],move[1],player)
             player = switch_player(player)
     return (board,get_game_status(board))
     pass
