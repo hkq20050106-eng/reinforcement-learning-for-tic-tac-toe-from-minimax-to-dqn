@@ -259,8 +259,43 @@ def play_interactive_game():
     return get_game_status(board)
     pass
 
-# Step 18 - TicTacToeGame (not yet solved)
-# TODO: implement
+# Step 18 - TicTacToeGame
+class TicTacToeGame:
+    """Stateful Tic-Tac-Toe environment wrapping the Part 1 engine."""
+
+    def __init__(self):
+        # 绑定到self，保存实例状态
+        self.board = create_empty_board()
+        self.current_player = 1
+        self.status = get_game_status(self.board)
+
+    def reset(self):
+        # 重置实例内部状态，返回空棋盘
+        self.board = create_empty_board()
+        self.current_player = 1
+        self.status = get_game_status(self.board)
+        return self.board
+
+    def legal_moves(self):
+        # 传入当前实例棋盘
+        return get_legal_moves(self.board)
+
+    def is_terminal(self):
+        # 判断游戏是否结束
+        return self.status != "ongoing"
+
+    def step(self, row, col):
+        if self.is_terminal():
+            raise ValueError("Game is already terminal")
+        # 执行落子
+        self.board = place_move(self.board, row, col, self.current_player)
+        self.status = get_game_status(self.board)
+
+        # 仅当游戏还在进行，才切换玩家
+        if self.status == "ongoing":
+            self.current_player = switch_player(self.current_player)
+
+        return self.board, self.status
 
 # Step 19 - random_move_agent (not yet solved)
 # TODO: implement
