@@ -329,8 +329,15 @@ def play_random_vs_random_game(rng):
     return get_game_status(board)
     pass
 
-# Step 21 - play_random_vs_random_matches (not yet solved)
-# TODO: implement
+# Step 21 - play_random_vs_random_matches
+def play_random_vs_random_matches(n_games, rng):
+    """Run n_games random-vs-random games and return the list of outcome strings."""
+    # TODO: run n_games independent random-vs-random games and collect outcomes.
+    outcomes = []
+    for _ in range(n_games):
+        outcomes.append(play_random_vs_random_game(rng))
+    return outcomes
+    pass
 
 # Step 22 - compute_outcome_rates (not yet solved)
 # TODO: implement
