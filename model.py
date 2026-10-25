@@ -550,8 +550,39 @@ def encode_board_state_key(board):
     return key
     pass
 
-# Step 32 - canonical_board_key (not yet solved)
-# TODO: implement
+# Step 32 - canonical_board_key
+def canonical_board_key(board):
+    # TODO: return the lex-smallest encoded key over all 8 symmetries of the board.
+    # 辅助：顺时针旋转90度（3x3固定索引映射，高效直观）
+    def rotate_90(b):
+        return [
+            [b[2][0], b[1][0], b[0][0]],
+            [b[2][1], b[1][1], b[0][1]],
+            [b[2][2], b[1][2], b[0][2]]
+        ]
+    
+    # 辅助：水平镜像翻转（左右反射）
+    def reflect_horizontal(b):
+        return [row[::-1] for row in b]
+    
+    candidate_keys = []
+    
+    # 第一组：原棋盘的4次旋转
+    current = board
+    for _ in range(4):
+        candidate_keys.append(encode_board_state_key(current))
+        current = rotate_90(current)
+    
+    # 第二组：镜像后棋盘的4次旋转
+    current = reflect_horizontal(board)
+    for _ in range(4):
+        candidate_keys.append(encode_board_state_key(current))
+        current = rotate_90(current)
+    
+    # 取字典序最小的编码作为唯一规范键
+    return min(candidate_keys)
+
+    pass
 
 # Step 33 - initialize_q_table (not yet solved)
 # TODO: implement
