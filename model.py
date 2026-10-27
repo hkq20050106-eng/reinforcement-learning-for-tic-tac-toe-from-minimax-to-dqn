@@ -607,8 +607,12 @@ def set_q_value(q_table, state_key, action, value):
     q_table[(state_key,action)] = value
     pass
 
-# Step 36 - choose_learning_rate_alpha (not yet solved)
-# TODO: implement
+# Step 36 - choose_learning_rate_alpha
+def choose_learning_rate_alpha():
+    """Return the learning rate alpha (float in (0, 1]) for tabular Q-learning."""
+    # TODO: return a float in (0, 1] to use as the Q-learning step size.
+    return 0.1
+    pass
 
 # Step 37 - choose_discount_factor_gamma (not yet solved)
 # TODO: implement
